@@ -22,15 +22,9 @@ const state = [
 ];
 
 function render() {
-  console.log(state);
-  addToList();
-}
-
-render();
-
-function addToList() {
   const shoppingList = document.createElement('ul');
   const shoppingBoard = document.getElementById('shoppingBoard');
+  shoppingBoard.innerHTML = '';
   shoppingBoard.appendChild(shoppingList);
   // Loop through CategoryBucket array
   for (let i = 0; i < state.length; i++) {
@@ -42,11 +36,28 @@ function addToList() {
     categoryBucketElement.appendChild(categoryNameList);
     // Loop through Product array
     for (let j = 0; j < categoryBucket.products.length; j++) {
-      const aaaproduct = categoryBucket.products[j];
+      const product = categoryBucket.products[j];
 
       const productElement = document.createElement('li');
-      productElement.appendChild(document.createTextNode(aaaproduct.name));
+      productElement.appendChild(document.createTextNode(product.name));
       categoryNameList.appendChild(productElement);
     }
   }
 }
+
+render();
+
+let addButton = document.getElementById('addButton');
+addButton.addEventListener('click', addToList);
+
+function addToList() {
+  let productNameInput = document.getElementById('productNameInput');
+  let inputValue = productNameInput.value;
+  if(inputValue == 0){
+    return;
+  }
+  state[0].products.push(new Product (inputValue, 1, inputNumTypePieces));
+  render();
+}
+
+
