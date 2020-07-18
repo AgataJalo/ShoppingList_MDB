@@ -16,45 +16,76 @@
     />
     <!-- Main css file -->
     <link rel="stylesheet" href="css/index.min.css" />
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
     <!-- Custom styles -->
-    <style></style>
+    <style>
+
+      body{
+        margin:0;
+        padding:0;
+        box-sizing: border-box;
+      }
+
+      .form {
+         background-color: #009efd;
+         padding:5px;
+      }
+
+      .shoppingBoardTitle{
+        border-bottom: 1px solid lightgrey;
+      }
+
+      .counterDiv{
+        
+      }
+
+    </style>
+    <script src="https://kit.fontawesome.com/a332a40ff2.js" crossorigin="anonymous"></script>
   </head>
 
   <body>
     <div class="container">
-      <h1>Shopping <span class="title">List</span></h1>
+     
+        <div class="form d-flex flex-column align-items-center mt-5">
+          <h1 class="text-center">Shopping <span class="title">List</span></h1>
+        <label for="productNameInput" class="text-center mt-1">Start creating your list! </label>
+        <input type="text" id="productNameInput" class="form-control col-4" aria-describedby="inputGroup-sizing-sm" placeholder="Enter the product name..." class="col-3">
+        
 
-      
-        <label for="productNameInput">Product name: </label>
-        <input type="text" id="productNameInput">
-        <button id="addButton">add</button>
-
-        <label for="quantityInput">Quantity: </label>
-        <input type="number" id="quantityInput" min=1>
-        <label for="changeRadio">Quantity: </label>
-        <input type="radio" name="changeRadio" value="quantity" id="changeRadioQuantity">
-        <label for="changeRadio">Weight: </label>
-        <input type="radio" name="changeRadio" value="weight" id="changeRadioWeight">
-
-        <label for="categorySelect">Category: </label>
-        <select name="category" id="categorySelect">
-          <option disabled selected value>Select category of product:</option>
-          <option value="vegetables">Vegetables</option>
-          <option value="fruits">Fruits</option>
-          <option value="dairy">Dairy</option>
-          <option value="bread">Grains & Bread</option>
-          <option value="snacks">Snacks</option>
-          <option value="drinks">Drinks</option>
-          <option value="others">Others</option>
+        <label for="quantityInput" class="text-center mt-1">Set the quantity of the product: </label>
+        <input type="number" id="quantityInput" min=1 class="form-control col-1 pl-0" aria-describedby="inputGroup-sizing-sm" class="col-3" placeholder="">
+        <label for="radios" class="text-center mt-1">Select the correct option:</label>
+        
+        <div class="radios">
+        <label for="changeRadio" class="">Quantity </label>
+        <input type="radio" name="changeRadio" value="quantity" id="changeRadioQuantity" class="">
+        <label for="changeRadio" class="">Weight </label>
+        <input type="radio" name="changeRadio" value="weight" id="changeRadioWeight" class="">
+      </div>
+     
+      <label for="select" class="">Select category of product:</label>
+        <select name="category" id="categorySelect" class="text-center form-control-sm col-4">
+          <option disabled selected value>Click here to select</option> 
+          <option value="Vegetables" class="optionValue">Vegetables</option>
+          <option value="Fruits">Fruits</option>
+          <option value="Dairy">Dairy</option>
+          <option value="Bread">Grains & Bread</option>
+          <option value="Snacks">Snacks</option>
+          <option value="Drinks">Drinks</option>
+          <option value="Others">Others</option>
       </select>
-
-
-
-      <div id="shoppingBoard"></div>
+      <button id="addButton" class="col-1 btn btn-light-sm mt-2"><i class="fas fa-plus"></i></button>
+    </div>
+      <h3 class="text-center mt-1 shoppingBoardTitle">Your list:</h3> 
+      <div id="counterDiv"></div>
+      <div id="shoppingBoard" class="container col-8 mt-1"></div>
     </div>
   </body>
   <!-- Main js file -->
   <script type="text/javascript" src="js/index.min.js"></script>
   <!-- Custom scripts -->
   <script type="text/javascript"></script>
+  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js" integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous"></script>
 </html>

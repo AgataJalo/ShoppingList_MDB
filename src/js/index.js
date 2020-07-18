@@ -11,42 +11,68 @@ const inputNumTypeWeight = 1;
 
 const state = [
   new CategoryBucket('pieczywo', [
-    new Product('chleb', 2, inputNumTypePieces),
-    new Product('bułka', 1, inputNumTypePieces),
+  new Product('chleb', 2, inputNumTypePieces),
+  new Product('bułka', 1, inputNumTypePieces),
   ]),
-  new CategoryBucket('owoce', [
-    new Product('jabłko', 2, inputNumTypeWeight),
-    new Product('arbuz', 1, inputNumTypePieces),
-    new Product('banan', 6, inputNumTypePieces),
-  ]),
+   new CategoryBucket('owoce', [
+     new Product('jabłko', 2, inputNumTypeWeight),
+     new Product('arbuz', 1, inputNumTypePieces),
+     new Product('banan', 6, inputNumTypePieces),
+   ]),
 ];
 
 function render() {
   console.log(state);
 
   const shoppingList = document.createElement('ul');
+  shoppingList.classList.add("list-group");
   const shoppingBoard = document.getElementById('shoppingBoard');
   shoppingBoard.innerHTML = '';
   shoppingBoard.appendChild(shoppingList);
   // Loop through CategoryBucket array
+  let counter=0;
+
   for (let i = 0; i < state.length; i++) {
     const categoryBucket = state[i];
+    if(categoryBucket.products.length === 0){
+      continue
+    }
     const categoryBucketElement = document.createElement('li');
+    categoryBucketElement.classList.add("list-group-item");
     shoppingList.appendChild(categoryBucketElement);
     categoryBucketElement.appendChild(document.createTextNode(categoryBucket.name));
     const categoryNameList = document.createElement('ul');
+    categoryNameList.classList.add("list-group");
+    categoryNameList.classList.add("list-group-flush");
     categoryBucketElement.appendChild(categoryNameList);
     // Loop through Product array
     for (let j = 0; j < categoryBucket.products.length; j++) {
       const product = categoryBucket.products[j];
 
       const productElement = document.createElement('li');
+      productElement.classList.add("list-group-item");
       productElement.appendChild(document.createTextNode(product.name));
       productElement.appendChild(document.createTextNode(product.inputNum));
       productElement.appendChild(document.createTextNode(product.inputNumType));
       categoryNameList.appendChild(productElement);
+      counter++;
+      const removeButton = document.createElement('button');
+      const buttonText = document.createTextNode('delete');
+      removeButton.className = "remove"
+      removeButton.appendChild(buttonText)
+      productElement.appendChild(removeButton);
+
+      
+      let removeFunction = function () {
+       categoryBucket.products.splice(j,1);
+       render();
+      }
+
+      removeButton.onclick = removeFunction;
     }
   }
+  let counterDiv = document.getElementById('counterDiv');
+  counterDiv.textContent = counter;
 }
 
 render();
@@ -62,7 +88,7 @@ function addToList() {
   }
   const categorySelect = document.getElementById('categorySelect');
   let selectedCategory = categorySelect.options[categorySelect.selectedIndex].value;
-  console.log(selectedCategory);
+  
 
   if (selectedCategory===""){
     return;
@@ -98,7 +124,6 @@ function addToList() {
   } else {
     quantityTypeValue=inputNumTypeWeight;
   }
-
   categoryBucket.products.push(new Product (inputValue, quantityInputValue, quantityTypeValue));
   render();
 }
