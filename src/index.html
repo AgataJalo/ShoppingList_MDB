@@ -24,10 +24,30 @@
     <div class="container">
       <h1>Shopping <span class="title">List</span></h1>
 
-
-        <label for="">Product name:</label>
+      
+        <label for="productNameInput">Product name: </label>
         <input type="text" id="productNameInput">
         <button id="addButton">add</button>
+
+        <label for="quantityInput">Quantity: </label>
+        <input type="number" id="quantityInput" min=1>
+        <label for="changeRadio">Quantity: </label>
+        <input type="radio" name="changeRadio" value="quantity" id="changeRadioQuantity">
+        <label for="changeRadio">Weight: </label>
+        <input type="radio" name="changeRadio" value="weight" id="changeRadioWeight">
+
+        <label for="categorySelect">Category: </label>
+        <select name="category" id="categorySelect">
+          <option disabled selected value>Select category of product:</option>
+          <option value="vegetables">Vegetables</option>
+          <option value="fruits">Fruits</option>
+          <option value="dairy">Dairy</option>
+          <option value="bread">Grains & Bread</option>
+          <option value="snacks">Snacks</option>
+          <option value="drinks">Drinks</option>
+          <option value="others">Others</option>
+      </select>
+
 
 
       <div id="shoppingBoard"></div>

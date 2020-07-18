@@ -22,6 +22,8 @@ const state = [
 ];
 
 function render() {
+  console.log(state);
+
   const shoppingList = document.createElement('ul');
   const shoppingBoard = document.getElementById('shoppingBoard');
   shoppingBoard.innerHTML = '';
@@ -40,6 +42,8 @@ function render() {
 
       const productElement = document.createElement('li');
       productElement.appendChild(document.createTextNode(product.name));
+      productElement.appendChild(document.createTextNode(product.inputNum));
+      productElement.appendChild(document.createTextNode(product.inputNumType));
       categoryNameList.appendChild(productElement);
     }
   }
@@ -47,17 +51,54 @@ function render() {
 
 render();
 
-let addButton = document.getElementById('addButton');
+const addButton = document.getElementById('addButton');
 addButton.addEventListener('click', addToList);
 
 function addToList() {
-  let productNameInput = document.getElementById('productNameInput');
-  let inputValue = productNameInput.value;
+  const productNameInput = document.getElementById('productNameInput');
+  const inputValue = productNameInput.value;
   if(inputValue == 0){
     return;
   }
-  state[0].products.push(new Product (inputValue, 1, inputNumTypePieces));
+  const categorySelect = document.getElementById('categorySelect');
+  let selectedCategory = categorySelect.options[categorySelect.selectedIndex].value;
+  console.log(selectedCategory);
+
+  if (selectedCategory===""){
+    return;
+  }
+
+  let categoryBucket;
+  for (let i=0; i<state.length; i++){
+    if(state[i].name === selectedCategory){
+      categoryBucket=state[i];
+      break;
+    }
+  }
+  
+  if (categoryBucket === undefined){
+    categoryBucket = new CategoryBucket (selectedCategory, [])
+    state.push(categoryBucket);
+  }
+
+  //num input
+  const quantityInput = document.getElementById('quantityInput');
+  const quantityInputValue = quantityInput.value;
+ 
+  if (quantityInputValue === ""){
+         return;
+    }
+ 
+  //Radios
+  const changeRadioQuantity = document.getElementById('changeRadioQuantity');
+  
+  let quantityTypeValue;
+  if(changeRadioQuantity.checked === true){
+    quantityTypeValue = inputNumTypePieces;
+  } else {
+    quantityTypeValue=inputNumTypeWeight;
+  }
+
+  categoryBucket.products.push(new Product (inputValue, quantityInputValue, quantityTypeValue));
   render();
 }
-
-
