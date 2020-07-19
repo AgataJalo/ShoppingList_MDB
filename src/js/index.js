@@ -18,6 +18,7 @@ const state = [
      new Product('jabłko', 2, inputNumTypeWeight),
      new Product('arbuz', 1, inputNumTypePieces),
      new Product('banan', 6, inputNumTypePieces),
+     new Product('banan', 1, inputNumTypeWeight),
    ]),
 ];
 
@@ -71,7 +72,20 @@ function render() {
       productTr.appendChild(tdNum);
       
       const tdNumType = document.createElement('td');
-      tdNumType.textContent = product.inputNumType;
+      if(product.inputNumType === inputNumTypeWeight){
+        if(product.inputNum === 1){
+          tdNumType.textContent = "gram";
+        } else {
+          tdNumType.textContent = "grams";
+        }
+       } else {
+         if(product.inputNum === 1){
+           tdNumType.textContent = "piece";
+         } else {
+           tdNumType.textContent = "pieces";
+         }
+      }
+      
       productTr.appendChild(tdNumType);
 
       const tdRemove = document.createElement('td');
@@ -129,9 +143,9 @@ function addToList() {
 
   //num input
   const quantityInput = document.getElementById('quantityInput');
-  const quantityInputValue = quantityInput.value;
+  const quantityInputValue = parseInt(quantityInput.value);
  
-  if (quantityInputValue === ""){
+  if (isNaN(quantityInputValue)){
          return;
     }
  
