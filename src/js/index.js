@@ -24,10 +24,17 @@ const state = [
 function render() {
   console.log(state);
 
-  const shoppingList = document.createElement('ul');
-  shoppingList.classList.add("list-group");
   const shoppingBoard = document.getElementById('shoppingBoard');
   shoppingBoard.innerHTML = '';
+
+  const shoppingList = document.createElement('table');
+  shoppingList.classList.add("table");
+
+  const tbody = document.createElement('tbody');
+  shoppingList.appendChild(tbody);
+
+
+  
   shoppingBoard.appendChild(shoppingList);
   // Loop through CategoryBucket array
   let counter=0;
@@ -37,42 +44,55 @@ function render() {
     if(categoryBucket.products.length === 0){
       continue
     }
-    const categoryBucketElement = document.createElement('li');
-    categoryBucketElement.classList.add("list-group-item");
-    shoppingList.appendChild(categoryBucketElement);
-    categoryBucketElement.appendChild(document.createTextNode(categoryBucket.name));
-    const categoryNameList = document.createElement('ul');
-    categoryNameList.classList.add("list-group");
-    categoryNameList.classList.add("list-group-flush");
-    categoryBucketElement.appendChild(categoryNameList);
+
+    const categoryTr = document.createElement('tr');
+    categoryTr.classList.add('table-primary');
+
+    const categoryTd = document.createElement('td');
+    categoryTd.classList.add('text-center');
+    categoryTd.setAttribute('colspan','4');
+    categoryTd.textContent = categoryBucket.name;
+    categoryTr.appendChild(categoryTd);
+    tbody.appendChild(categoryTr);
+
+
     // Loop through Product array
     for (let j = 0; j < categoryBucket.products.length; j++) {
+      counter++;
       const product = categoryBucket.products[j];
 
-      const productElement = document.createElement('li');
-      productElement.classList.add("list-group-item");
-      productElement.appendChild(document.createTextNode(product.name));
-      productElement.appendChild(document.createTextNode(product.inputNum));
-      productElement.appendChild(document.createTextNode(product.inputNumType));
-      categoryNameList.appendChild(productElement);
-      counter++;
-      const removeButton = document.createElement('button');
-      const buttonText = document.createTextNode('delete');
-      removeButton.className = "remove"
-      removeButton.appendChild(buttonText)
-      productElement.appendChild(removeButton);
+      const productTr = document.createElement('tr');
+      const tdName = document.createElement('td');
+      tdName.textContent = product.name;
+      productTr.appendChild(tdName);
+      
+      const tdNum = document.createElement('td');
+      tdNum.textContent = product.inputNum;
+      productTr.appendChild(tdNum);
+      
+      const tdNumType = document.createElement('td');
+      tdNumType.textContent = product.inputNumType;
+      productTr.appendChild(tdNumType);
 
+      const tdRemove = document.createElement('td');
+      const removeBtn = document.createElement('button');
+      removeBtn.className = "remove"
+      tdRemove.appendChild(removeBtn);
+      
+      productTr.appendChild(tdRemove);
+      
+      tbody.appendChild(productTr);
       
       let removeFunction = function () {
-       categoryBucket.products.splice(j,1);
-       render();
-      }
+        categoryBucket.products.splice(j,1);
+        render();
+       }
 
-      removeButton.onclick = removeFunction;
+       removeBtn.onclick = removeFunction;
     }
   }
   let counterDiv = document.getElementById('counterDiv');
-  counterDiv.textContent = counter;
+  counterDiv.textContent = "Products on list: "+counter;
 }
 
 render();
