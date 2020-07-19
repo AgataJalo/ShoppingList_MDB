@@ -114,11 +114,15 @@ function render() {
       };
 
       removeBtn.onclick = removeFunction;
+      document.getElementById('productNameInput').value = "";
+      document.getElementById('quantityInput').value = "";
+      document.getElementById('categorySelect').value = "";
+      document.getElementById('changeRadioWeight').checked= false;
     }
   }
   let counterDiv = document.getElementById('counterDiv');
   counterDiv.textContent =
-    'Products on list: ' + counter + ' Weight: ' + counterWeight + ' Quantity: ' + counterQuantity;
+    'Products on list: ' + counter + ' Weight: ' + counterWeight + 'g ' +' Quantity: ' + counterQuantity;
 }
 
 const addButton = document.getElementById('addButton');
@@ -127,13 +131,16 @@ addButton.addEventListener('click', addToList);
 function addToList() {
   const productNameInput = document.getElementById('productNameInput');
   const inputValue = productNameInput.value;
+ 
   if (inputValue == 0) {
-    return;
+  swal("You miss product name!");
+  return;
   }
   const categorySelect = document.getElementById('categorySelect');
   let selectedCategory = categorySelect.options[categorySelect.selectedIndex].value;
 
   if (selectedCategory === '') {
+    swal("Choose category!");
     return;
   }
 
@@ -155,17 +162,22 @@ function addToList() {
   const quantityInputValue = parseInt(quantityInput.value);
 
   if (isNaN(quantityInputValue)) {
+    swal("Enter quantity or weight(g)!");
     return;
   }
 
   //Radios
   const changeRadioQuantity = document.getElementById('changeRadioQuantity');
+  const changeRadioWeight = document.getElementById('changeRadioWeight');
 
   let quantityTypeValue;
   if (changeRadioQuantity.checked === true) {
     quantityTypeValue = inputNumTypePieces;
-  } else {
+  } else if (changeRadioWeight.checked === true) {
     quantityTypeValue = inputNumTypeWeight;
+  } else {
+    swal("Choose quantity or weight category!");
+    return;
   }
   categoryBucket.products.push(new Product(inputValue, quantityInputValue, quantityTypeValue));
   render();

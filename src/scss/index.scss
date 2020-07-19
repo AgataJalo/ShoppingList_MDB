@@ -6,27 +6,19 @@
     padding:0;
     box-sizing: border-box;
   }
-
-  body{
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-  }
-
+  
   .form {
      background-color: #b8daff;
-     
   }
 
   .shoppingBoardTitle{
     border-bottom: 1px solid lightgrey;
   }
  
-  .logo, .cross{
+  .logo, .cross {
       color: #6f42c1;
   }
 
   h1 {
       color: #b8daff;
   }
-
