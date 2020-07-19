@@ -8,22 +8,29 @@ export default {
 
 const inputNumTypePieces = 0;
 const inputNumTypeWeight = 1;
+const localStorageKey = 'storage';
 
-const state = [
-  new CategoryBucket('pieczywo', [
-    new Product('chleb', 2, inputNumTypePieces),
-    new Product('bułka', 1, inputNumTypePieces),
-  ]),
-  new CategoryBucket('owoce', [
-    new Product('jabłko', 2, inputNumTypeWeight),
-    new Product('arbuz', 1, inputNumTypePieces),
-    new Product('banan', 6, inputNumTypePieces),
-    new Product('banan', 1, inputNumTypeWeight),
-  ]),
-];
+let state = [];
+
+loadFromLocalStorage();
+render();
+
+function saveToLocalStorage() {
+  localStorage.setItem(localStorageKey, JSON.stringify(state));
+}
+
+function loadFromLocalStorage() {
+  const retrievedObject = localStorage.getItem(localStorageKey);
+  if (retrievedObject != null) {
+    state = JSON.parse(retrievedObject);
+  } else {
+    state = [];
+  }
+}
 
 function render() {
   console.log(state);
+  saveToLocalStorage();
 
   const shoppingBoard = document.getElementById('shoppingBoard');
   shoppingBoard.innerHTML = '';
@@ -107,8 +114,6 @@ function render() {
   let counterDiv = document.getElementById('counterDiv');
   counterDiv.textContent = 'Products on list: ' + counter;
 }
-
-render();
 
 const addButton = document.getElementById('addButton');
 addButton.addEventListener('click', addToList);
