@@ -1,57 +1,57 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
-    <meta http-equiv="x-ua-compatible" content="ie=edge" />
-    <title>Shopping List MDB</title>
-    <!-- Favicon -->
-    <link rel="icon" href="" type="" />
-    <!-- Font Awesome -->
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.11.2/css/all.css" />
-    <!-- Google Fonts Roboto -->
-    <link
-      rel="stylesheet"
-      href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap"
-    />
-    <!-- Main css file -->
-    <link rel="stylesheet" href="css/index.min.css" />
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
-    <!-- Custom styles -->
-    <style>
 
-    </style>
-    <script src="https://kit.fontawesome.com/a332a40ff2.js" crossorigin="anonymous"></script>
-  </head>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+  <meta http-equiv="x-ua-compatible" content="ie=edge" />
+  <title>Shopping List MDB</title>
+  <!-- Favicon -->
+  <link rel="icon" href="" type="" />
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.11.2/css/all.css" />
+  <!-- Google Fonts Roboto -->
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" />
+  <!-- Main css file -->
+  <link rel="stylesheet" href="css/index.min.css" />
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"
+    integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+  <!-- Custom styles -->
+  <style>
 
-  <body>
-    <h1 class="text-center">Shopping <span class="logo">List</span></h1>
-    <div class="container">
-        <div class="form d-flex flex-column align-items-center mt-2">
-        
-        <label for="productNameInput" class="text-center mt-1">Start creating your list! </label>
-        <div class="col-xs-2">
-        <input type="text" id="productNameInput" class="form-control" aria-describedby="inputGroup-sizing-sm" placeholder="Enter the product name...">
+  </style>
+  <script src="https://kit.fontawesome.com/a332a40ff2.js" crossorigin="anonymous"></script>
+</head>
+
+<body>
+  <h1 class="text-center">Shopping <span class="logo">List</span></h1>
+  <div class="container">
+    <div class="form d-flex flex-column align-items-center mt-2">
+
+      <label for="productNameInput" class="text-center mt-1">Start creating your list! </label>
+      <div class="col-xs-2">
+        <input type="text" id="productNameInput" class="form-control" aria-describedby="inputGroup-sizing-sm"
+          placeholder="Enter the product name...">
       </div>
-        
-        
+
       <div class="col-xs-2">
         <label for="quantityInput" class="text-center mt-1">Set the quantity of the product: </label>
-        <input type="number" id="quantityInput" min=1 class="form-control" aria-describedby="inputGroup-sizing-sm" placeholder="">
+        <input type="number" id="quantityInput" min=1 class="form-control" aria-describedby="inputGroup-sizing-sm"
+          placeholder="">
         <label for="radios" class="text-center mt-1">Select the correct option:</label>
       </div>
 
-        <div class="radios">
+      <div class="radios">
         <label for="changeRadio" class="">Quantity </label>
         <input type="radio" name="changeRadio" value="quantity" id="changeRadioQuantity" class="">
         <label for="changeRadio" class="">Weight </label>
         <input type="radio" name="changeRadio" value="weight" id="changeRadioWeight" class="">
       </div>
       <label for="select" class="">Select category of product:</label>
-      
+
       <div class="col-xs-2">
         <select name="category" id="categorySelect" class="browser-default custom-select">
-          <option disabled selected value>Click here to select</option> 
+          <option disabled selected value>Click here to select</option>
           <option value="Vegetables" class="optionValue">Vegetables</option>
           <option value="Fruits">Fruits</option>
           <option value="Dairy">Dairy</option>
@@ -59,24 +59,28 @@
           <option value="Snacks">Snacks</option>
           <option value="Drinks">Drinks</option>
           <option value="Others">Others</option>
-      </select>
-    </div>
-      
-    <button id="addButton" class="btn btn-light mt-2 mb-2"><i class="fas fa-plus cross"></i></button>
+        </select>
+      </div>
+
+      <button id="addButton" class="btn btn-light mt-2 mb-2"><i class="fas fa-plus cross"></i></button>
 
     </div>
-    
-      <h3 class="text-center mt-1 shoppingBoardTitle">Your list:</h3> 
-      <div id="counterDiv"></div>
-      <div id="shoppingBoard" class="mt-1"></div>
-    </div>
 
-  </body>
-  <!-- Main js file -->
-  <script type="text/javascript" src="js/index.min.js"></script>
-  <!-- Custom scripts -->
-  <script type="text/javascript"></script>
-  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
-<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js" integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous"></script>
+    <h3 class="text-center mt-1 shoppingBoardTitle">Your list:</h3>
+    <div id="counterDiv"></div>
+    <div id="shoppingBoard" class="mt-1"></div>
+  </div>
+
+</body>
+<!-- Main js file -->
+<script type="text/javascript" src="js/index.min.js"></script>
+<!-- Custom scripts -->
+<script type="text/javascript"></script>
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
+  integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+  integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"
+  integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous"></script>
+
 </html>
