@@ -44,6 +44,8 @@ function render() {
   shoppingBoard.appendChild(shoppingList);
   // Loop through CategoryBucket array
   let counter = 0;
+  let counterWeight = 0;
+  let counterQuantity = 0;
 
   for (let i = 0; i < state.length; i++) {
     const categoryBucket = state[i];
@@ -76,13 +78,16 @@ function render() {
       productTr.appendChild(tdNum);
 
       const tdNumType = document.createElement('td');
+
       if (product.inputNumType === inputNumTypeWeight) {
+        counterWeight = counterWeight + product.inputNum;
         if (product.inputNum === 1) {
           tdNumType.textContent = 'gram';
         } else {
           tdNumType.textContent = 'grams';
         }
       } else {
+        counterQuantity = counterQuantity + product.inputNum;
         if (product.inputNum === 1) {
           tdNumType.textContent = 'piece';
         } else {
@@ -112,7 +117,8 @@ function render() {
     }
   }
   let counterDiv = document.getElementById('counterDiv');
-  counterDiv.textContent = 'Products on list: ' + counter;
+  counterDiv.textContent =
+    'Products on list: ' + counter + ' Weight: ' + counterWeight + ' Quantity: ' + counterQuantity;
 }
 
 const addButton = document.getElementById('addButton');
