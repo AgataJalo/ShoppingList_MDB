@@ -20,47 +20,37 @@
     <!-- Custom styles -->
     <style>
 
-      body{
-        margin:0;
-        padding:0;
-        box-sizing: border-box;
-      }
-
-      .form {
-         background-color: #009efd;
-         padding:5px;
-      }
-
-      .shoppingBoardTitle{
-        border-bottom: 1px solid lightgrey;
-      }
-     
     </style>
     <script src="https://kit.fontawesome.com/a332a40ff2.js" crossorigin="anonymous"></script>
   </head>
 
   <body>
+    <h1 class="text-center">Shopping <span class="logo">List</span></h1>
     <div class="container">
-     
-        <div class="form d-flex flex-column align-items-center mt-5">
-          <h1 class="text-center">Shopping <span class="title">List</span></h1>
+        <div class="form d-flex flex-column align-items-center mt-2">
+        
         <label for="productNameInput" class="text-center mt-1">Start creating your list! </label>
-        <input type="text" id="productNameInput" class="form-control col-4" aria-describedby="inputGroup-sizing-sm" placeholder="Enter the product name..." class="col-3">
+        <div class="col-xs-2">
+        <input type="text" id="productNameInput" class="form-control" aria-describedby="inputGroup-sizing-sm" placeholder="Enter the product name...">
+      </div>
         
-
+        
+      <div class="col-xs-2">
         <label for="quantityInput" class="text-center mt-1">Set the quantity of the product: </label>
-        <input type="number" id="quantityInput" min=1 class="form-control col-1 pl-0" aria-describedby="inputGroup-sizing-sm" class="col-3" placeholder="">
+        <input type="number" id="quantityInput" min=1 class="form-control" aria-describedby="inputGroup-sizing-sm" placeholder="">
         <label for="radios" class="text-center mt-1">Select the correct option:</label>
-        
+      </div>
+
         <div class="radios">
         <label for="changeRadio" class="">Quantity </label>
         <input type="radio" name="changeRadio" value="quantity" id="changeRadioQuantity" class="">
         <label for="changeRadio" class="">Weight </label>
         <input type="radio" name="changeRadio" value="weight" id="changeRadioWeight" class="">
       </div>
-     
       <label for="select" class="">Select category of product:</label>
-        <select name="category" id="categorySelect" class="text-center form-control-sm col-4">
+      
+      <div class="col-xs-2">
+        <select name="category" id="categorySelect" class="browser-default custom-select">
           <option disabled selected value>Click here to select</option> 
           <option value="Vegetables" class="optionValue">Vegetables</option>
           <option value="Fruits">Fruits</option>
@@ -70,11 +60,15 @@
           <option value="Drinks">Drinks</option>
           <option value="Others">Others</option>
       </select>
-      <button id="addButton" class="col-1 btn btn-light-sm mt-2"><i class="fas fa-plus"></i></button>
     </div>
+      
+    <button id="addButton" class="btn btn-light mt-2 mb-2"><i class="fas fa-plus cross"></i></button>
+
+    </div>
+    
       <h3 class="text-center mt-1 shoppingBoardTitle">Your list:</h3> 
       <div id="counterDiv"></div>
-      <div id="shoppingBoard" class="container col-8 mt-1"></div>
+      <div id="shoppingBoard" class="mt-1"></div>
     </div>
 
   </body>

@@ -6,6 +6,7 @@ export default {
   mdb,
 };
 
+
 const inputNumTypePieces = 0;
 const inputNumTypeWeight = 1;
 
@@ -89,8 +90,10 @@ function render() {
       productTr.appendChild(tdNumType);
 
       const tdRemove = document.createElement('td');
+      tdRemove.className ="d-flex justify-content-end"
       const removeBtn = document.createElement('button');
-      removeBtn.className = "remove"
+      removeBtn.className = "btn"
+      removeBtn.textContent = "delete"
       tdRemove.appendChild(removeBtn);
       
       productTr.appendChild(tdRemove);
